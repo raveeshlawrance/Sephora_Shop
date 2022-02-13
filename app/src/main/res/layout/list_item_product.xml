@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/txtViewProdIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textAllCaps="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtViewProdBrand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtViewProdIcon"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Prod Type"
+        android:textSize="12dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtViewProdName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtViewProdBrand"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:text="Prod name"
+        android:textAllCaps="true"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+    
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtViewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtViewProdName"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:textSize="12dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="25.00" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtViewDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtViewProdName"
+        android:layout_toRightOf="@+id/txtViewPrice"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="12dp"
+        android:visibility="gone"
+        android:layout_marginBottom="20dp"
+        android:text="20%" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/sephoraRatingBarSmall"
+        android:id="@+id/ratingBarProductRating"
+        android:layout_below="@+id/txtViewPrice"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/sephoraRatingBarSmall"
+        android:text="6 Types"
+        android:textSize="10dp"
+        android:id="@+id/txtViewProdTypeCount"
+        android:layout_below="@+id/ratingBarProductRating"/>
+</RelativeLayout>
