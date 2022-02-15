@@ -1,7 +1,10 @@
-package com.sephora.shop.model
+package com.sephora.shop.model.productlist
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class ProductListResponse(
 
 	@field:SerializedName("data")
@@ -15,8 +18,9 @@ data class ProductListResponse(
 
 	@field:SerializedName("included")
 	val included: List<ProductItem?>? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Relationships(
 
 	@field:SerializedName("product")
@@ -27,8 +31,9 @@ data class Relationships(
 
 	@field:SerializedName("option-values")
 	val optionValues: OptionValues? = null
-)
+) : Parcelable
 
+@Parcelize
 data class DataItem(
 
 	@field:SerializedName("id")
@@ -36,8 +41,9 @@ data class DataItem(
 
 	@field:SerializedName("type")
 	val type: String? = null
-)
+) : Parcelable
 
+@Parcelize
 data class ProductItem(
 
 	@field:SerializedName("relationships")
@@ -51,8 +57,9 @@ data class ProductItem(
 
 	@field:SerializedName("type")
 	val type: String? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Meta(
 
 	@field:SerializedName("per-page")
@@ -69,24 +76,28 @@ data class Meta(
 
 	@field:SerializedName("total-pages")
 	val totalPages: Int? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Categories(
-	val any: Any? = null
-)
+	val any: String? = null
+) : Parcelable
 
+@Parcelize
 data class OptionValues(
 
 	@field:SerializedName("data")
 	val data: List<DataItem?>? = null
-)
+) : Parcelable
 
+@Parcelize
 data class OptionTypes(
 
 	@field:SerializedName("data")
 	val data: List<DataItem?>? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Attributes(
 
 	@field:SerializedName("sold-out")
@@ -96,7 +107,7 @@ data class Attributes(
 	val available: Boolean? = null,
 
 	@field:SerializedName("sale-text")
-	val saleText: Any? = null,
+	val saleText: String? = null,
 
 	@field:SerializedName("original-price")
 	val originalPrice: Int? = null,
@@ -108,7 +119,7 @@ data class Attributes(
 	val inventory: Int? = null,
 
 	@field:SerializedName("sephora-id")
-	val sephoraId: Any? = null,
+	val sephoraId: String? = null,
 
 	@field:SerializedName("new-arrival")
 	val newArrival: Boolean? = null,
@@ -147,7 +158,7 @@ data class Attributes(
 	val brandSlugUrl: String? = null,
 
 	@field:SerializedName("labels")
-	val labels: List<Any?>? = null,
+	val labels: List<String?>? = null,
 
 	@field:SerializedName("zoom-image-urls")
 	val zoomImageUrls: List<String?>? = null,
@@ -180,12 +191,13 @@ data class Attributes(
 	val category: String? = null,
 
 	@field:SerializedName("mobile-app-banner-image")
-	val mobileAppBannerImage: Any? = null,
+	val mobileAppBannerImage: String? = null,
 
 	@field:SerializedName("brand-limit")
-	val brandLimit: Any? = null
-)
+	val brandLimit: String? = null
+) : Parcelable
 
+@Parcelize
 data class Data(
 
 	@field:SerializedName("id")
@@ -193,18 +205,21 @@ data class Data(
 
 	@field:SerializedName("type")
 	val type: String? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Brand(
 
 	@field:SerializedName("data")
 	val data: Data? = null
-)
+) : Parcelable
 
+@Parcelize
 data class OptionType(
-	val any: Any? = null
-)
+	val any: String? = null
+) : Parcelable
 
+@Parcelize
 data class Seo(
 
 	@field:SerializedName("meta-description")
@@ -212,22 +227,26 @@ data class Seo(
 
 	@field:SerializedName("page-title")
 	val pageTitle: String? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Variants(
-	val any: Any? = null
-)
+	val any: String? = null
+) : Parcelable
 
+@Parcelize
 data class FeaturedReview(
-	val any: Any? = null
-)
+	val any: String? = null
+) : Parcelable
 
+@Parcelize
 data class Product(
 
 	@field:SerializedName("data")
 	val data: Data? = null
-)
+) : Parcelable
 
+@Parcelize
 data class Links(
 
 	@field:SerializedName("next")
@@ -238,16 +257,18 @@ data class Links(
 
 	@field:SerializedName("self")
 	val self: String? = null
-)
+) : Parcelable
 
+@Parcelize
 data class FeaturedAd(
 
 	@field:SerializedName("data")
-	val data: Any? = null
-)
+	val data: String? = null
+) : Parcelable
 
+@Parcelize
 data class FeaturedVariant(
 
 	@field:SerializedName("data")
 	val data: Data? = null
-)
+) : Parcelable

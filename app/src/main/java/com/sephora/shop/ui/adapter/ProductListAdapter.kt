@@ -17,12 +17,15 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sephora.shop.R
-import com.sephora.shop.model.ProductItem
-import com.sephora.shop.model.ProductListResponse
+import com.sephora.shop.listener.ProductSelectListener
+import com.sephora.shop.model.productlist.ProductItem
+import com.sephora.shop.model.productlist.ProductListResponse
 
-class ProductListAdapter (
+class ProductListAdapter(
     val context: Context?,
-    val productListResponse: ProductListResponse?) : RecyclerView.Adapter<ProductListAdapter.UserListViewHolder>() {
+    private val productListResponse: ProductListResponse?,
+    val productSelectListener: ProductSelectListener
+) : RecyclerView.Adapter<ProductListAdapter.UserListViewHolder>() {
     class UserListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         fun bind(productListResponse: ProductListResponse?, postition : Int) {
 
@@ -102,6 +105,7 @@ class ProductListAdapter (
             holder.bind(productListResponse, position)
         }
         holder.itemView.setOnClickListener {
+            productSelectListener.onSelectProduct(productListResponse?.data?.get(position))
         }
     }
 
