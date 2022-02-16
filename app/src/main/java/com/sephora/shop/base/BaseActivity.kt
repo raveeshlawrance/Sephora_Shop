@@ -2,10 +2,17 @@ package com.sephora.shop.base
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StrikethroughSpan
+import android.text.style.StyleSpan
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.LayoutRes
@@ -87,6 +94,25 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
             }
         }
         return false
+    }
+
+    fun getSpannableText(offerPrice : String?, originalPrice: Int?, discPrice: Int?): Spannable? {
+        val spannable = SpannableString(offerPrice)
+        spannable.setSpan(
+            StrikethroughSpan(),
+            0, originalPrice.toString().length + 1,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(
+            ForegroundColorSpan(Color.RED),
+            originalPrice.toString().length + 4 + discPrice.toString().length,
+            offerPrice?.length!!,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(
+            StyleSpan(Typeface.BOLD),
+            originalPrice.toString().length + 2,
+            originalPrice.toString().length + 2 + discPrice.toString().length + 2,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        return spannable
     }
 
     @LayoutRes

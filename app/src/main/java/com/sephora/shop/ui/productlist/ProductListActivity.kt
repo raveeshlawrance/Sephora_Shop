@@ -15,34 +15,29 @@ import com.sephora.shop.model.productlist.ProductListViewModel
 import com.sephora.shop.model.productlist.ProductListViewModelFactory
 import com.sephora.shop.ui.adapter.ProductListAdapter
 import com.sephora.shop.ui.details.ProductDetailActivity
+import com.sephora.shop.util.Constants.PRODUCT_ITEM_KEY
+import com.sephora.shop.util.Constants.PRODUCT_LIST_KEY
 
 class ProductListActivity : BaseActivity<ActivityProductListBinding>(), ProductSelectListener {
     private lateinit var productViewModel: ProductListViewModel
     var productSelectListener : ProductSelectListener = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        productViewModel =
-            ViewModelProvider(this, ProductListViewModelFactory()).get(ProductListViewModel::class.java)
-        productViewModel.getProductList()
+        productViewModel = ViewModelProvider(this, ProductListViewModelFactory()).get(ProductListViewModel::class.java)
 
+        productViewModel.getProductList()
         productViewModel._text.observe(this, Observer {
             var productListResponse : ProductListResponse = it
             binding.rvProductList.layoutManager =
                 GridLayoutManager(applicationContext, 2)
             binding.rvProductList.adapter = ProductListAdapter(applicationContext, productListResponse, productSelectListener)
         })
-
-        /*var productList = loadFromAsset(applicationContext,"product_list_response.json")
-        var productListResponse : ProductListResponse = gson.fromJson(productList, ProductListResponse::class.java)
-        var rvProductList = findViewById<RecyclerView>(R.id.rv_product_list)
-        rvProductList.layoutManager =
-            GridLayoutManager(applicationContext, 2)
-        rvProductList.adapter = ProductListAdapter(applicationContext, productListResponse, productSelectListener)*/
     }
 
-    override fun onSelectProduct(productItem: ProductItem?) {
+    override fun onSelectProduct(productListResponse : ProductListResponse?, productItem: ProductItem?) {
         var prodDetailsActivity = Intent(this, ProductDetailActivity::class.java)
-        prodDetailsActivity.putExtra("productItem", productItem)
+        prodDetailsActivity.putExtra(PRODUCT_ITEM_KEY, productItem)
+        prodDetailsActivity.putExtra(PRODUCT_LIST_KEY, productListResponse)
         startActivity(prodDetailsActivity)
     }
 

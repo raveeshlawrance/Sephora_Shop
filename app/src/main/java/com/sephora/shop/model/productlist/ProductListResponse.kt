@@ -2,7 +2,7 @@ package com.sephora.shop.model.productlist
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
+import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ProductListResponse(
@@ -105,6 +105,12 @@ data class Attributes(
 
 	@field:SerializedName("available")
 	val available: Boolean? = null,
+
+	@field:SerializedName("description")
+	val description: String? = null,
+
+	@field:SerializedName("benefits")
+	val benefits: String? = null,
 
 	@field:SerializedName("sale-text")
 	val saleText: String? = null,

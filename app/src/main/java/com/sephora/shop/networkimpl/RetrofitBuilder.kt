@@ -2,6 +2,7 @@ package com.sephora.shop.networkimpl
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,6 +18,10 @@ object RetrofitBuilder {
         val httpClient = OkHttpClient.Builder()
         httpClient.readTimeout(120, TimeUnit.SECONDS )
         httpClient.connectTimeout(120, TimeUnit.SECONDS )
+        var httpLoggingInterceptor : HttpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        httpClient.addNetworkInterceptor(httpLoggingInterceptor)
         httpClient.networkInterceptors().add(Interceptor { chain ->
             val requestBuilder = chain.request().newBuilder()
             requestBuilder.header("X-OS-Name", "android")
